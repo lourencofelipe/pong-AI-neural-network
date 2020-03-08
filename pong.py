@@ -38,7 +38,7 @@ def drawPaddle1(paddle1YPos):
     paddle1 = pygame.rect(PADDLE_BUFFER, paddle1YPos, PADDLE_WIDTH, PADDLE_HEIGHT)
     pygame.draw.rect(screen, WHITE, paddle1)
  
- #inicializando a raquete2
+#inicializando a raquete2
 def drawPaddle2(paddle2YPos):
     paddle2 = pygame.rect(WINDOW_WIDTH - PADDLE_BUFFER - PADDLE_WIDTH, paddle2YPos, PADDLE_WIDTH, PADDLE_HEIGHT)
     pygame.draw.rect(screen, WHITE, paddle2)
@@ -71,5 +71,22 @@ def updateBall(paddle1YPos, paddle2YPos, ballXPos, ballYPos, ballXDirection, bal
         ballYPos = WINDOW_HEIGHT - BALL_HEIGHT
         ballYDirection = -1
         return [score, paddle1YPos, paddle2YPos, ballXPos, ballYPos, ballXDirection, ballYDirection]
-)
+
+#atualiza movimento da raquete1
+def updatePaddle1(action, paddle1YPos):
+    #se mover para cima
+    if(action[1] == 1):
+        paddle1YPos = paddle1YPos - PADDLE_SPEED
+    #se mover para baixo
+    if(action[2] == 1):
+        paddle1YPos = paddle1YPos - PADDLE_SPEED
+    
+    #não deixa sair da tela
+    if(paddle1YPos < 0):
+        paddle1YPos = 0
+    if(paddle1YPos > WINDOW_HEIGHT - PADDLE_HEIGHT):
+        paddle1YPos = WINDOW_HEIGHT - PADDLE_HEIGHT
+    return paddle1YPos
+
+
     
