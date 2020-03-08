@@ -28,8 +28,14 @@ BLACK = (0, 0, 0)
 #inicializando a tela
 screen = pygame.display.set_mode(WINDOW_WIDTH, WINDOW_HEIGHT)
 
+#iniciando a função da bola
 def drawBall(ballXpos, ballYpos):
     ball = pygame.rect(ballXpos, ballYpos, BALL_WIDTH, BALL_HEIGHT)
     pygame.draw.rect(screen, WHITE, ball)
 
-
+#inicializando a função da raquete1
+def drawPaddle1(paddle1YPos):
+    paddle1 = pygame.rect(PADDLE_BUFFER, paddle1YPos, PADDLE_WIDTH, PADDLE_HEIGHT)
+    pygame.draw.rect(screen, WHITE, paddle1)
+ 
+ 
