@@ -28,4 +28,8 @@ BLACK = (0, 0, 0)
 #inicializando a tela
 screen = pygame.display.set_mode(WINDOW_WIDTH, WINDOW_HEIGHT)
 
+def drawBall(ballXpos, ballYpos):
+    ball = pygame.rect(ballXpos, ballYpos, BALL_WIDTH, BALL_HEIGHT)
+    pygame.draw.rect(screen, WHITE, ball)
+
 
