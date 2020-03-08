@@ -88,5 +88,18 @@ def updatePaddle1(action, paddle1YPos):
         paddle1YPos = WINDOW_HEIGHT - PADDLE_HEIGHT
     return paddle1YPos
 
-
+def updatePaddle2(paddle2YPos, ballYPos):
+    
+    if (paddle2YPos + PADDLE_HEIGHT/2 < ballYPos + BALL_HEIGHT/2):
+        paddle2YPos = paddle2YPos + PADDLE_SPEED
+    #move para cima
+    if (paddle2YPos + PADDLE_HEIGHT/2 > ballYPos + BALL_HEIGHT/2):
+        paddle2YPos = paddle2YPos - PADDLE_SPEED
+    #não deixa a bola tocar o topo
+    if (paddle2YPos < 0):
+        paddle2YPos = 0
+    #não deixa a bola tocar a parte inferior
+    if (paddle2YPos > WINDOW_HEIGHT - PADDLE_HEIGHT):
+        paddle2YPos = WINDOW_HEIGHT - PADDLE_HEIGHT
+    return paddle2YPos
     
