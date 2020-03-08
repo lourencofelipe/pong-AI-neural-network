@@ -38,4 +38,7 @@ def drawPaddle1(paddle1YPos):
     paddle1 = pygame.rect(PADDLE_BUFFER, paddle1YPos, PADDLE_WIDTH, PADDLE_HEIGHT)
     pygame.draw.rect(screen, WHITE, paddle1)
  
- 
+ #inicializando a raquete2
+ def drawPaddle2(paddle2YPos):
+    paddle2 = pygame.rect(WINDOW_WIDTH - PADDLE_BUFFER - PADDLE_WIDTH, paddle2YPos, PADDLE_WIDTH, PADDLE_HEIGHT)
+    pygame.draw.rect(screen, WHITE, paddle2)
