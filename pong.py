@@ -39,6 +39,37 @@ def drawPaddle1(paddle1YPos):
     pygame.draw.rect(screen, WHITE, paddle1)
  
  #inicializando a raquete2
- def drawPaddle2(paddle2YPos):
+def drawPaddle2(paddle2YPos):
     paddle2 = pygame.rect(WINDOW_WIDTH - PADDLE_BUFFER - PADDLE_WIDTH, paddle2YPos, PADDLE_WIDTH, PADDLE_HEIGHT)
     pygame.draw.rect(screen, WHITE, paddle2)
+
+def updateBall(paddle1YPos, paddle2YPos, ballXPos, ballYPos, ballXDirection, ballYDirection):
+    #atualiza posição X e Y
+    ballXPos = ballYPos + ballXDirection * BALL_X_SPEED
+    ballYPos = ballYPos + ballYDirection * BALL_Y_SPEED
+    score = 0
+
+    #verifica a colisão, se a bola tocar o lado esquerdo, alterna a direção
+    if(ballXPos <= PADDLE_BUFFER + PADDLE_WIDTH and ballYPos + BALL_HEIGHT >= paddle1YPos and ballYPos - BALL_HEIGHT <= paddle1YPos + PADDLE_HEIGHT):
+        ballXDirection = 1
+    elif(ballXPos <= 0):
+        ballXDirection = 1
+        score = 1
+        return [score, paddle1YPos, paddle2YPos, ballXPos, ballYPos, ballXDirection, ballYDirection]
+
+    if(ballXPos >= WINDOW_WIDTH - PADDLE_WIDTH - PADDLE_BUFFER and ballYPos + BALL_HEIGHT >= paddle2YPos and ballYPos - BALL_HEIGHT <= paddle2YPos + PADDLE_HEIGHT):
+        ballXDirection = -1
+    elif(ballXPos >= WINDOW_WIDTH - BALL_WIDTH):
+        ballXDirection = -1
+        score = 1
+        return [score, paddle1YPos, paddle2YPos, ballXPos, ballYPos, ballXDirection, ballYDirection]
+
+    if(ballYPos <= 0):
+        ballYPos = 0
+        ballYDirection = 1
+    elif(ballYDirection >= WINDOW_HEIGHT - BALL_HEIGHT):
+        ballYPos = WINDOW_HEIGHT - BALL_HEIGHT
+        ballYDirection = -1
+        return [score, paddle1YPos, paddle2YPos, ballXPos, ballYPos, ballXDirection, ballYDirection]
+)
+    
