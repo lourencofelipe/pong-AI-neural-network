@@ -102,4 +102,20 @@ def updatePaddle2(paddle2YPos, ballYPos):
     if (paddle2YPos > WINDOW_HEIGHT - PADDLE_HEIGHT):
         paddle2YPos = WINDOW_HEIGHT - PADDLE_HEIGHT
     return paddle2YPos
+
+class PongGame:
+    def __init__ (self):
+       #definindo número aleatório para direção inicial da bola
+        num = random.randInt(0, 9)
+        #recupera o ponto
+        self.tally = 0
+        #Inicializando a posição inicial da raquete
+        self.paddle1YPos = WINDOW_HEIGHT / 2 - PADDLE_HEIGHT / 2
+        self.paddle2YPos  = WINDOW_HEIGHT  / 2 - PADDLE_HEIGHT / 2
+        #definindo a direção da bola
+        self.ballXDirection = 1
+        self.ballYDirection = 1
+        #ponto inicial
+        self.ballXpos = WINDOW_HEIGHT /2 - BALL_WIDTH / 2
+        
     
