@@ -117,5 +117,19 @@ class PongGame:
         self.ballYDirection = 1
         #ponto inicial
         self.ballXpos = WINDOW_HEIGHT /2 - BALL_WIDTH / 2
-        
-    
+
+    def getPresentFrame(self):
+        #Para cada frame é chamado o evento da fila
+        pygame.event.pump()
+        #deixando o background preto
+        screen.fill(BLACK)
+        #desenhando as raquetes
+        drawPaddle1(self.paddle1YPos)
+        drawPaddle2(self.paddle2YPos)
+        #desenhando a bola
+        drawBall(self.ballXDirection, self.ballYDirection)
+        image_data = pygame.surfarray.array3d(pygame.display.get_surface())
+        #atualizando a janela
+        pygame.display.flip()
+        #retorna os dados da imagem
+        return image_data
