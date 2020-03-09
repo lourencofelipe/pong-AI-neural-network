@@ -133,3 +133,19 @@ class PongGame:
         pygame.display.flip()
         #retorna os dados da imagem
         return image_data
+
+    def getNextFrame(self, action):
+        pygame.event.pump()
+        screen.fill(BLACK)
+       
+        self.paddle1YPos = updatePaddle1(action, self.paddle1YPos)
+        drawPaddle2(self.paddle1YPos)
+        
+        self.paddle2YPos = updatePaddle2(self.paddle2YPos, self.ballYPos)
+        drawBall(self.ballXpos, self.ballYpos)
+        
+        image_data = pygame.surfarray.array3d(pygame.display.get_surface())
+        pygame.display.flip()
+        self.tally = self.tally + score
+        
+        return [score, image_data]
