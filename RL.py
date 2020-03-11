@@ -62,3 +62,14 @@ def createGraph():
     fc5 = tf.matmul(fc4, W_fc5) + b_fc5
 
     return s, fc5
+
+def main():
+
+    #Create session
+    sess = tf.InteractiveSession()
+    #Input layer and output layer
+    inp, out = createGraph()
+    tainGraph(inp, out, sess)
+
+if __name__ = "__main__":
+    main()
